@@ -6,16 +6,9 @@ import com.upwork.activity.service.impl.ActivityServiceImpl;
 import com.upwork.activity.util.ScheduleUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.mockito.junit.jupiter.MockitoSettings;
-import org.mockito.quality.Strictness;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.TestPropertySource;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -49,19 +42,12 @@ class ActivityServiceTest {
     }
 
     @Test
-    void testListAllActivity() {
-        when(activityRepository.findAll()).thenReturn(getActivityEntities());
-        List<ActivityEntity> result = activityService.listAllActivity();
-        assertEquals(2, result.size());
-    }
-
-    @Test
     void testFindActivityScheduledOrAboutToStart() {
         LocalDateTime now = scheduleUtils.getCurrentDateTime();
         LocalDateTime startDate = now.minus(15, ChronoUnit.MINUTES);
         LocalDateTime endDate = now.plus(15, ChronoUnit.MINUTES);
-        when(activityRepository.findActivitiesScheduledOrAboutToStart(startDate, endDate)).thenReturn(getActivityEntities());
-        ActivityEntity result = activityService.findActivityScheduledOrAboutToStart();
+        when(activityRepository.findActivitiesScheduledOrAboutToStart("CR101", startDate, endDate)).thenReturn(getActivityEntities());
+        ActivityEntity result = activityService.findActivityScheduledOrAboutToStart("CR101");
         assertNotNull(result);
         assertEquals("CR101", result.getClassRoom().getId());
     }

@@ -8,6 +8,5 @@ import java.util.List;
 
 public interface ActivityService {
 
-    List<ActivityEntity> listAllActivity();
-    ActivityEntity findActivityScheduledOrAboutToStart();
+    ActivityEntity findActivityScheduledOrAboutToStart(String classRoomId);
 }

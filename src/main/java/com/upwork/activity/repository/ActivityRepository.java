@@ -12,6 +12,6 @@ import java.util.List;
 public interface ActivityRepository extends JpaRepository<ActivityEntity, Integer> {
 
     @Query("SELECT a FROM ActivityEntity a " +
-            "WHERE a.startDate BETWEEN :startDate and :endDate ")
-    List<ActivityEntity> findActivitiesScheduledOrAboutToStart(LocalDateTime startDate, LocalDateTime endDate);
+            "WHERE a.classRoom.id = :classRoomId and a.startDate BETWEEN :startDate and :endDate ")
+    List<ActivityEntity> findActivitiesScheduledOrAboutToStart(String classRoomId, LocalDateTime startDate, LocalDateTime endDate);
 }

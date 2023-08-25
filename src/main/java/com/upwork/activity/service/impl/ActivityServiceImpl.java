@@ -26,18 +26,13 @@ public class ActivityServiceImpl implements ActivityService {
     private ScheduleUtils scheduleUtils;
 
     @Override
-    public List<ActivityEntity> listAllActivity(){
-        return activityRepository.findAll();
-    }
-
-    @Override
     //Find the activity that is taking place. The student is able to checking in the activity
     // if it is between 15 minutos earlier or 15 minutes later the start date of the activity(Defined in variable 'timeBuffer')
-    public ActivityEntity findActivityScheduledOrAboutToStart() {
+    public ActivityEntity findActivityScheduledOrAboutToStart(String classRoomId) {
         LocalDateTime now = scheduleUtils.getCurrentDateTime();
         LocalDateTime startDate = now.minus(timeBuffer, ChronoUnit.MINUTES);
         LocalDateTime endDate = now.plus(timeBuffer, ChronoUnit.MINUTES);
-        List<ActivityEntity> activities = activityRepository.findActivitiesScheduledOrAboutToStart(startDate,endDate);
+        List<ActivityEntity> activities = activityRepository.findActivitiesScheduledOrAboutToStart(classRoomId,startDate,endDate);
         return CollectionUtils.isEmpty(activities) ? null : activities.get(0);
     }
 }
