@@ -15,7 +15,7 @@ class HealthControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    public void testSayHelloEndpoint() throws Exception {
+    void testSayHelloEndpoint() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
                         .get("/health")
                         .contentType(MediaType.APPLICATION_JSON))

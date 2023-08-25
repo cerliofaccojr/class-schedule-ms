@@ -4,7 +4,6 @@ package com.upwork.activity.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Data
 @Entity

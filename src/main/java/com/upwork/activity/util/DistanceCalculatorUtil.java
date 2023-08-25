@@ -1,6 +1,11 @@
 package com.upwork.activity.util;
 
 public class DistanceCalculatorUtil {
+
+    private DistanceCalculatorUtil() {
+        throw new IllegalStateException("Utility class");
+    }
+
     private static final double EARTH_RADIUS = 6371000; // Earth's radius in meters
 
     //Calulates distance beteween two coordenates

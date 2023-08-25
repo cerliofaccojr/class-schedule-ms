@@ -7,6 +7,7 @@ public class ValidationErrorResponse {
     private List<String> errors = new ArrayList<>();
 
     public ValidationErrorResponse() {
+        super();
     }
 
     public void addValidationError(String error) {

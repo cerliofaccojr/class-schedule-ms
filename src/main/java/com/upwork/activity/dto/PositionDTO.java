@@ -1,6 +1,5 @@
 package com.upwork.activity.dto;
 
-import com.upwork.activity.entity.AttendanceEntity;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
